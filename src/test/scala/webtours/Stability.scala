@@ -14,9 +14,9 @@ class Stability extends Simulation{
   setUp(
     CommonScenario().inject(
       // Длительность разгона
-      rampUsersPerSec(0)  to intensity.toInt during rampDuration,
+      rampUsersPerSec(0)  to intensity during rampDuration,
       // Длительность полки
-      constantUsersPerSec(intensity.toInt) during stageDuration,
+      constantUsersPerSec(intensity) during stageDuration,
     ),
   ).protocols(httpProtocol)
     // Длительность теста = разгон + полка
