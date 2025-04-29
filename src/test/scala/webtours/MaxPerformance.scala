@@ -7,7 +7,7 @@ import scala.concurrent.duration.{DurationInt, FiniteDuration}
 
 
 class MaxPerformance extends Simulation {
-  val intensity =100 // Максимально 100 RPS целевое значение нагрузки
+  val intensity: Double = 5.0// Максимально 5 RPS целевое значение нагрузки
   val stagesNumber = 10 // Количество ступеней (от 0 до 100% с шагом 10%)
   val stageDuration: FiniteDuration = 2.minutes // Длительность каждой ступени
   val rampDuration: FiniteDuration = 30.seconds // Время разгона между ступенями
@@ -18,8 +18,8 @@ class MaxPerformance extends Simulation {
   // Собираем все ступени вместе
   setUp(
     CommonScenario().inject(
-      incrementUsersPerSec((intensity / stagesNumber).toDouble)
-        .times(stagesNumber)
+      incrementUsersPerSec((intensity / stagesNumber).toDouble) // интенсивность на ступень
+        .times(stagesNumber) // количество ступеней
         .eachLevelLasting(stageDuration)
         .separatedByRampsLasting(rampDuration)
         .startingFrom(0)
@@ -32,3 +32,4 @@ class MaxPerformance extends Simulation {
       global.failedRequests.percent.lt(5) // Процент ошибок менее 5%
     )
 }
+
