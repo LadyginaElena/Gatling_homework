@@ -13,7 +13,7 @@ class Stability extends Simulation{
   setUp(
     CommonScenario().inject(
       // Длительность разгона
-      rampUsersPerSec(0)  to intensity.toDouble during rampDuration,
+      rampUsersPerSec(0)  to intensity during rampDuration,
       // Длительность полки
       constantUsersPerSec(intensity) during stageDuration,
     ),

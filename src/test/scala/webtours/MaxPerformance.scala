@@ -18,7 +18,7 @@ class MaxPerformance extends Simulation {
   // Собираем все ступени вместе
   setUp(
     CommonScenario().inject(
-      incrementUsersPerSec((intensity / stagesNumber).toDouble) // интенсивность на ступень
+      incrementUsersPerSec((intensity / stagesNumber)) // интенсивность на ступень
         .times(stagesNumber) // количество ступеней
         .eachLevelLasting(stageDuration)
         .separatedByRampsLasting(rampDuration)
