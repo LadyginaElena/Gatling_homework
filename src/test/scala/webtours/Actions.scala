@@ -25,7 +25,7 @@ object Actions {
       .check(css("input[name='userSession']", "value").saveAs("USER_SESSION"))
       .check(status.is(200))
 
-    val login: HttpRequestBuilder = http("user login - #{login} - userSession -#{USER_SESSION}")
+    val login: HttpRequestBuilder = http("user login - #{login}")
       .post("/cgi-bin/login.pl")
       .formParam("userSession", "#{USER_SESSION}")
       .formParam("username", "#{login}")
